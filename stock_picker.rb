@@ -3,15 +3,7 @@ require 'pry'
 def stock_picker(prices)
   buy_sell = []
 
-  prices.each do |current_price|  # finds all positive-profit buy-sell pairs
-    prices.each_with_index do |price, index|
-      unless current_price == price
-        unless current_price - price < 0
-          buy_sell << [price, current_price]
-        end
-      end
-    end
-  end
+  prices.permutation(2) { |pair| buy_sell << pair }
 
   profit = buy_sell.reduce(Array.new(2, 0)) do |best_profit, current_pair|
 
