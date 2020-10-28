@@ -3,6 +3,7 @@ require 'pry'
 def stock_picker(prices)
   buy_sell = []
 
+  # finds all possible buy-sell pairs regardless of profit or position
   prices.permutation(2) { |pair| buy_sell << pair }
 
   profit = buy_sell.reduce(Array.new(2, 0)) do |best_profit, current_pair|
